@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div class="container">
+        <div class="col-sm-8">
+            <div class="page-header">
+                <h1>Add a new task</h1>
+            </div>
+            <form name="taskForm" data-ng-submit="submitForm(taskForm.$valid)">
+                <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" name="category" class="form-control" data-ng-model="data.form.category" required>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="title" class="form-control" data-ng-model="data.form.title" required>
+                </div>
+                <div class="form-group">
+                    <label>Priority</label>
+                    <input type="text" name="priority" class="form-control" data-ng-model="data.form.priority" required>
+                </div>
+                <div class="form-group">
+                    <label>Content</label>
+                    <input type="text" name="content" class="form-control" data-ng-model="data.form.content">
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input data-provide="datepicker">
+                    <input type="date">
+                    <input type="text" name="date" class="form-control" data-ng-model="data.form.date" required>
+                </div>
+                <button type="submit" class="btn btn-primary" data-ng-disabled="taskForm.$invalid">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
