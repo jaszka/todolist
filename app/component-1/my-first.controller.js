@@ -1,4 +1,4 @@
-angular.module('app.component1').controller('MyFirstController', function ($scope, $http, $modal, books, todos, todoService) {
+angular.module('app.component1').controller('MyFirstController', function ($scope, $http, $modal, todoService) {
     'use strict';
 
     $scope.data = {
@@ -9,15 +9,22 @@ angular.module('app.component1').controller('MyFirstController', function ($scop
             priority: '',
             content: '',
             date: ''
-        },
-        books: books.data
+        }
     }
+
+    $scope.filter = 'category';
+    $scope.search = {
+        category: '',
+        title: ''
+    };
 
     $scope.edit = function (index) {
         $modal.open({
             templateUrl: '/component-1/modal-dialog/modal-dialog.tpl.html',
             controller: 'MyModalController',
             size: 'lg',
+            backdrop: 'static',
+            keyboard: false,
             resolve: {
                 selectedTodo: function () {
                     return $scope.todos[index];
@@ -26,11 +33,24 @@ angular.module('app.component1').controller('MyFirstController', function ($scop
         });
     };
 
+    //$scope.test = console.log(todoService.todosTest());
+
+    todoService.todosList().then(function (list) {
+        $scope.todos = list;
+    });
+
     $scope.add = function () { //TODO change to add todo form
         $modal.open({
             templateUrl: '/component-1/modal-dialog/modal-add.tpl.html',
             controller: 'MyModalController',
-            size: 'lg'
+            size: 'lg',
+            backdrop: 'static',
+            keyboard: false,
+            resolve: {
+                selectedTodo: function () {
+                    return $scope.data.form;
+                }
+            }
         });
     };
 
@@ -38,25 +58,27 @@ angular.module('app.component1').controller('MyFirstController', function ($scop
         todoService.print();
     }
 
-
-    $scope.selectRow = function (index) {
-        $scope.selectedRowIndex = index;
-    }
-
     $http.get('http://rest-service.guides.spring.io/greeting').
         then(function (response) {
             $scope.greeting = response.data;
         });
 
-    $scope.books = books.data;
-    $scope.todos = todos.data;
-    $scope.openModal = function () { //controllery sa funkcja konstruktowa
-        alert('There will be a modal here');
+    //controllery sa funkcja konstruktowa
+
+
+
+}).controller('MyModalController', function ($scope, $modalInstance, selectedTodo) {
+    'use strict';
+
+    $scope.selectedTodo = selectedTodo;
+
+    $scope.ok = function () {
+        $modalInstance.close();
     };
 
+    $scope.categories = ["MEETING", "SHOPPING", "REMINDER"];
 
-}).controller('MyModalController', function ($scope, $modalInstance) { //wszystkie funkcje Angulara wyswietlane sa z dolarem
-    'use strict';
+    $scope.priorities = ["HIGH", "MEDIUM", "LOW"];
 
     $scope.submitForm = function (isValid) {
         if (isValid) {
@@ -70,5 +92,4 @@ angular.module('app.component1').controller('MyFirstController', function ($scop
 
 })
 
-//do komunikacji ze springowymi RESTami sa serwisy tutaj, nie controllery
 //Promise service

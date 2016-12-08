@@ -10,7 +10,7 @@
             <form name="taskForm" data-ng-submit="submitForm(taskForm.$valid)">
                 <div class="form-group">
                     <label>Category</label>
-                    <input type="text" name="category" class="form-control" data-ng-model="data.form.category" required>
+                    <select class="form-control" ng-model="selectedCategory" ng-options="c for c in categories" required></select>
                 </div>
                 <div class="form-group">
                     <label>Title</label>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="form-group">
                     <label>Priority</label>
-                    <input type="text" name="priority" class="form-control" data-ng-model="data.form.priority" required>
+                    <select class="form-control" ng-model="selectedPriority" ng-options="c for c in priorities" required></select>
                 </div>
                 <div class="form-group">
                     <label>Content</label>
@@ -31,6 +31,7 @@
                     <input type="text" name="date" class="form-control" data-ng-model="data.form.date" required>
                 </div>
                 <button type="submit" class="btn btn-primary" data-ng-disabled="taskForm.$invalid">Submit</button>
+                <button class="btn btn-primary" data-ng-click="ok()">Cancel</button>
             </form>
         </div>
     </div>

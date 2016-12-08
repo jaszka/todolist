@@ -7,28 +7,22 @@
         <button data-ng-click="print()"> Test service </button>
         <form name="data.form">
             <div class="form-group">
-                <input name="searchInput" class="form-control" placeholder="Filter your tasks by key words"
+                <input name="searchInput" class="form-control" data-ng-model="search[filter]" placeholder="Filter your tasks by key words"
                 />
                 <p></p>
-                <button data-ng-click=""> Sort by last added </button>
+                <button class="btn btn-primary" data-ng-click=""> Sort by last added </button>
             </div>
         </form>
         <div>
-            <!--<table class="table table-hover">
-                <tbody>
-                    <tr data-ng-repeat="book in books">
-                        <td>{{book}}</td>
-                    </tr>
-                </tbody>
-            </table>-->
             <table class="table table-hover">
                 <thead>
                     <th>Task category</th>
                     <th>Task title</th>
                 </thead>
                 <tbody>
-                    <tr data-ng-click="edit($index)" data-ng-repeat="todo in todos">
-                        <td>{{todo.category}}</td><td data-ng-bind="todo.title"/>
+                    <tr data-ng-click="edit($index)" data-ng-repeat="todo in todos|filter:search">
+                        <td>{{todo.category}}</td>
+                        <td data-ng-bind="todo.title" />
                     </tr>
                 </tbody>
             </table>

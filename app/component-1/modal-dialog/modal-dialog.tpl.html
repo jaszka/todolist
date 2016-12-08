@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
 </head>
+
 <body>
-<div class="modal-content">
-    <div class="modal-header">
-        <h3 class="modal-title">I'm a modal!</h3>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">Task details</h3>
+        </div>
+        <div class="modal-body">
+            <p><b>Category:</b> {{selectedTodo.category}}</p>
+            <p><b>Title:</b> {{selectedTodo.title}}</p>
+            <p><b>Priority:</b> {{selectedTodo.priority}}</p>
+            <p><b>Content:</b> {{selectedTodo.content}}</p>
+            <p><b>Date:</b> {{selectedTodo.date.dayOfWeek}} , {{selectedTodo.date.dayOfMonth}} {{selectedTodo.date.month}} {{selectedTodo.date.year}}</p>
+        </div>
+        <div class="modal-footer ">
+            <button class="btn btn-primary" data-ng-click="ok()">OK</button>
+            <button class="btn btn-primary" data-ng-click="edit()">Edit</button>
+        </div>
     </div>
-    <div class="modal-body">
-            <p>Title: {{selectedTodo}}</p>
-    </div>
-    <div class="modal-footer ">
-        <button class="btn btn-primary" data-ng-click="ok()">OK</button>
-    </div>
-</div>
 </body>
+
 </html>
