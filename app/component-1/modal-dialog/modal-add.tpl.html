@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html>
 
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
 <body>
-    <div class="container">
-        <div class="col-sm-8">
-            <div class="page-header">
-                <h1>Add a new task</h1>
-            </div>
-            <form name="taskForm" data-ng-submit="submitForm(taskForm.$valid)">
-                <div class="form-group">
-                    <label>Category</label>
-                    <select class="form-control" ng-model="selectedCategory" ng-options="c for c in categories" required></select>
-                </div>
-                <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" name="title" class="form-control" data-ng-model="data.form.title" required>
-                </div>
-                <div class="form-group">
-                    <label>Priority</label>
-                    <select class="form-control" ng-model="selectedPriority" ng-options="c for c in priorities" required></select>
-                </div>
-                <div class="form-group">
-                    <label>Content</label>
-                    <input type="text" name="content" class="form-control" data-ng-model="data.form.content">
-                </div>
-                <div class="form-group">
-                    <label>Date</label>
-                    <input data-provide="datepicker">
-                    <input type="date">
-                    <input type="text" name="date" class="form-control" data-ng-model="data.form.date" required>
-                </div>
-                <button type="submit" class="btn btn-primary" data-ng-disabled="taskForm.$invalid">Submit</button>
-                <button class="btn btn-primary" data-ng-click="ok()">Cancel</button>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">Add a new task</h3>
+        </div>
+        <div class="modal-body">
+            <form name="taskForm">
+                <p><b>Category:</b>
+                    <select class="form-control" data-ng-model="todo.category" ng-options="c for c in categories" required></select></p>
+                <p><b>Title:</b>
+                    <input type="text" name="title" class="form-control" data-ng-model="todo.title" required></p>
+                <p><b>Priority:</b>
+                    <select class="form-control" data-ng-model="todo.priority" data-ng-options="c for c in priorities" required></select></p>
+                <p><b>Content:</b>
+                    <input type="text" name="content" class="form-control" data-ng-model="todo.content"></p>
+                <p><b>Date:</b>
+                    <span class="input-group date" id="datetimepicker"><input type="text" name="dateTimeInput" class="form-control" data-ng-model="todo.date" /><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </span>
+                </p>
+                <!--<div class="form-group">
+                    <label>Bootstrap date</label>
+                    <div class="input-group date" data-provide="datepicker">
+                        <input type="text" class="form-control">
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-th"></span>
+                        </div>
+                    </div>
+                </div>-->
             </form>
+            <div class="modal-footer ">
+                <button class="btn btn-primary" data-ng-click="submitForm()" data-ng-disabled="taskForm.$invalid">Submit</button>
+                <button class="btn btn-primary" data-ng-click="cancel()">Cancel</button>
+            </div>
         </div>
     </div>
 </body>

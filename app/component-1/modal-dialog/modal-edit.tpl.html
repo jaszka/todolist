@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">Edit task {{taskTitle}}</h3>
+        </div>
+        <div class="modal-body">
+            <p><b>Category:</b>
+            <select class="form-control" data-ng-model="editedTodo.category" ng-options="c for c in categories"></select></p>
+            <p><b>Title:</b>
+            <input type="text" name="title" class="form-control" data-ng-model="editedTodo.title"></p>
+            <p><b>Priority:</b>
+            <select class="form-control" data-ng-model="editedTodo.priority" data-ng-options="c for c in priorities"></select></p>
+            <p><b>Content:</b>
+            <input type="text" name="content" class="form-control" data-ng-model="editedTodo.content"></p>
+            <p><b>Date:</b>
+            <span class="input-group date" id="datetimepicker"><input type="text" name="dateTimeInput" class="form-control" data-ng-model="editedTodo.date" placeholder="selectedTodo.title"/><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </span>
+            </p>
+            <!--<div class="form-group">
+                    <label>Bootstrap date</label>
+                    <div class="input-group date" data-provide="datepicker">
+                        <input type="text" class="form-control">
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-th"></span>
+                        </div>
+                    </div>
+                </div>-->
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-ng-click="submitForm()">Submit changes</button>
+                <button class="btn btn-primary" data-ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

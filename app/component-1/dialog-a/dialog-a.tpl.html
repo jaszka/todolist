@@ -4,13 +4,11 @@
 <body>
     <section>
         <h2>The list of tasks</h2>
-        <button data-ng-click="print()"> Test service </button>
         <form name="data.form">
             <div class="form-group">
-                <input name="searchInput" class="form-control" data-ng-model="search[filter]" placeholder="Filter your tasks by key words"
-                />
+                <input name="searchInput" class="form-control" data-ng-model="search[filter]" placeholder="Filter your tasks by title" />
                 <p></p>
-                <button class="btn btn-primary" data-ng-click=""> Sort by last added </button>
+                <button class="btn btn-primary" data-ng-click="orderByCreationTime()"> Sort by last added </button>
             </div>
         </form>
         <div>
@@ -20,21 +18,22 @@
                     <th>Task title</th>
                 </thead>
                 <tbody>
-                    <tr data-ng-click="edit($index)" data-ng-repeat="todo in todos|filter:search">
+                    <tr data-ng-click="view(todo.id)" data-ng-repeat="todo in filteredTodos|filter:search">
                         <td>{{todo.category}}</td>
                         <td data-ng-bind="todo.title" />
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <div>
-            <button class="btn btn-primary" data-ng-click="add()"> Add todo </button>
+            <div>
+                <button class="btn btn-info btn-block" data-ng-click="add()"> Add todo </button>
+            </div>
+            <div class="text-center">
+                <pagination data-ng-model="currentPage" total-items="totalItems" items-per-page="numPerPage" max-size="noOfPages" boundary-links="false">
+                </pagination>
+            </div>
         </div>
     </section>
-
 </body>
-
-<!--data-ng-class="{'active': selectedRowIndex === $index}-->
 
 </html>
 
