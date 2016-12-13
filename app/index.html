@@ -25,9 +25,19 @@
     <script src="../bower_components/modernizr/modernizr.js"></script>
     <script src="../bower_components/respond/respond.min.js"></script>
     <!-- endbuild -->
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
+    <!-- jquery, moment, and angular have to get included before fullcalendar -->
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
+
 </head>
 
-<body data-ng-app="app" data-ng-controller="AppCntl">
+<body data-ng-app="app" data-ng-controller="AppCntl" style="background:#FFF">
+
     <!-- process:include main/layout/browsehappy.html -->
     <!-- /process -->
     <!-- process:include main/layout/navbar.html -->

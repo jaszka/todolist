@@ -1,1 +1,11 @@
-<h2>Hello from Dialog B!</h2>
+<h2></h2>
+<div id="calendar" ui-calendar="uiConfig.calendar" data-ng-model="eventSources" calendar="myCalendar"></div>
+
+<div class="row">
+    <div data-ng-show="selectedEvent" class="container">
+        <h4> Your task </h4>
+        <p data-ng-bind="selectedEvent.title"></p>
+        <p data-ng-bind="selectedEvent.description"></p>
+        <select data-ng-options="">status</select>
+    </div>
+</div>

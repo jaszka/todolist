@@ -14,33 +14,38 @@
         <div class="modal-body">
             <form name="taskForm">
                 <p><b>Category:</b>
-                    <select class="form-control" data-ng-model="todo.category" ng-options="c for c in categories" required></select></p>
-                <p><b>Title:</b>
-                    <input type="text" name="title" class="form-control" data-ng-model="todo.title" required></p>
-                <p><b>Priority:</b>
-                    <select class="form-control" data-ng-model="todo.priority" data-ng-options="c for c in priorities" required></select></p>
-                <p><b>Content:</b>
-                    <input type="text" name="content" class="form-control" data-ng-model="todo.content"></p>
-                <p><b>Date:</b>
-                    <span class="input-group date" id="datetimepicker"><input type="text" name="dateTimeInput" class="form-control" data-ng-model="todo.date" /><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                    </span>
-                </p>
-                <!--<div class="form-group">
-                    <label>Bootstrap date</label>
-                    <div class="input-group date" data-provide="datepicker">
-                        <input type="text" class="form-control">
-                        <div class="input-group-addon">
-                            <span class="glyphicon glyphicon-th"></span>
+                    <div class="btn-group btn-group-justified" role="group">
+                        <div class="btn-group">
+                            <input type="radio" name="category" data-ng-model="todo.category" data-ng-value="'MEETING'"><span
+                                class="glyphicon glyphicon-user" />Meeting
+                        </div>
+                        <div class="btn-group">
+                            <input type="radio" name="category" data-ng-model="todo.category" data-ng-value="'SHOPPING'"><span
+                                class="glyphicon glyphicon-piggy-bank" />Shopping
+                        </div>
+                        <div class="btn-group">
+                            <input type="radio" name="category" data-ng-model="todo.category" data-ng-value="'REMINDER'"><span
+                                class="glyphicon glyphicon-bell" />Reminder
                         </div>
                     </div>
-                </div>-->
+                    <p><b>Title:</b>
+                        <input type="text" name="title" class="form-control" data-ng-model="todo.title" required></p>
+                    <p><b>Priority:</b>
+                        <select class="form-control" data-ng-model="todo.priority" data-ng-options="c for c in priorities" required></select></p>
+                    <p><b>Content:</b>
+                        <textarea style="height:100px" type="text" name="content" class="form-control" data-ng-model="todo.content"></textarea></p>
+                    <p><b>Date:</b>
+                        <span class="input-group"><input type="text" class="form-control" datepicker-popup="{{format}}" data-ng-model="todo.date" data-ng-click="open($event)" is-open="opened" min-date="minDate"
+                        datepicker-options="dateOptions" close-text="Close" /><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </span>
+                    </p>
             </form>
             <div class="modal-footer ">
                 <button class="btn btn-primary" data-ng-click="submitForm()" data-ng-disabled="taskForm.$invalid">Submit</button>
-                <button class="btn btn-primary" data-ng-click="cancel()">Cancel</button>
+                <button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
+            </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>
