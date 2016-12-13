@@ -9,7 +9,8 @@
 <body>
     <div class="modal-content">
         <div class="modal-header">
-            <h3 class="modal-title">Add a new task</h3>
+            <h3 data-ng-show="adding" class="modal-title">Add a new task</h3>
+            <h3 data-ng-show="editing" class="modal-title">Edit task {{taskTitle}}</h3>
         </div>
         <div class="modal-body">
             <form name="taskForm">
@@ -41,7 +42,8 @@
                     </p>
             </form>
             <div class="modal-footer ">
-                <button class="btn btn-primary" data-ng-click="submitForm()" data-ng-disabled="taskForm.$invalid">Submit</button>
+                <button data-ng-show="adding" class="btn btn-primary" data-ng-click="submitAddForm()" data-ng-disabled="taskForm.$invalid">Submit</button>
+                <button data-ng-show="editing" class="btn btn-primary" data-ng-click="submitEditForm()" data-ng-disabled="taskForm.$invalid">Submit changes</button>
                 <button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
             </div>
             </div>

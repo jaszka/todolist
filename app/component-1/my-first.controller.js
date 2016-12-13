@@ -24,9 +24,6 @@ angular.module('app.component1').controller('FirstViewController', function($sco
             resolve: {
                 selectedTodo: function() {
                     return $scope.todo = $filter('filter')(todos, function(todo) { return todo.id === id; })[0];
-                },
-                todos: function() {
-                    return $scope.todos;
                 }
             }
         })
@@ -38,16 +35,16 @@ angular.module('app.component1').controller('FirstViewController', function($sco
     //     $scope.todos = list;
     // });
 
-    $scope.add = function(id) {
+    $scope.add = function() {
         $modal.open({
             templateUrl: '/component-1/modal-dialog/modal-add.tpl.html',
-            controller: 'EditTaskController',
+            controller: 'AddTaskController',
             size: 'md',
             backdrop: 'static',
             keyboard: false,
             resolve: {
                 selectedTodo: function() {
-                    return $scope.todo = $filter('filter')(todos, function(todo) { return todo.id === id; })[0];
+                    return null;
                 }
             }
         });
