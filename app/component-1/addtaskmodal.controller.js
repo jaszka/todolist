@@ -1,4 +1,4 @@
-angular.module('app.component1').controller('AddTaskController', function ($scope, $rootScope, $modalInstance, todoService, selectedTodo) {
+angular.module('app.component1').controller('AddTaskController', function ($scope, $rootScope, $modalInstance, todoService, dialogAService, selectedTodo) {
     'use strict';
 
     $scope.todo = {};
@@ -21,14 +21,14 @@ angular.module('app.component1').controller('AddTaskController', function ($scop
         var todoToAdd = $scope.todo;
         var addedTodo = todoService.addTodo(todoToAdd);
         $modalInstance.close();
-        $rootScope.$broadcast('updateView');
+        dialogAService.refreshView();
     };
 
     $scope.submitEditForm = function () {
         var todoToChange = $scope.todo;
         var changedTodo = todoService.amendTodo(todoToChange);
         $modalInstance.close();
-        $rootScope.$broadcast('updateView');
+        dialogAService.refreshView();
     };
 
     $scope.cancel = function () {

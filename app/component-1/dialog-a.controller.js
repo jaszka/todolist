@@ -4,10 +4,6 @@ angular.module('app.component1').controller('FirstViewController', function($sco
     $scope.todos = todos;
     $scope.todo = {};
 
-    $scope.$on("updateView", function() {
-        $window.location.reload();
-    });
-
     $scope.filter = 'title';
     $scope.search = {
         category: '',
@@ -60,11 +56,11 @@ angular.module('app.component1').controller('FirstViewController', function($sco
     $scope.numPerPage = 5;
     $scope.noOfPages = Math.ceil($scope.totalItems / $scope.numPerPage);
 
-    $scope.$watch('currentPage + numPerPage', function() {
-        var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-            , end = begin + $scope.numPerPage;
-        $scope.filteredTodos = $scope.todos.slice(begin, end);
-    }, true);
+    // $scope.$watch('currentPage + numPerPage', function() {
+    //     var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+    //         , end = begin + $scope.numPerPage;
+    //     $scope.filteredTodos = $scope.todos.slice(begin, end);
+    // }, true);
 
     //controllery sa funkcja konstruktowa
 
