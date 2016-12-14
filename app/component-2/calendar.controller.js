@@ -1,11 +1,10 @@
-angular.module('app.component2').controller('SecondViewController', function(uiCalendarConfig, $scope, $modal, $filter, $window, todoService, todos) {
+angular.module('app.component2').controller('SecondViewController', function(uiCalendarConfig, $scope, $modal, $filter, $window, $compile, todoService, todos) {
     'use strict';
 
     $scope.events = [];
     $scope.eventSources = [$scope.events];
 
     $scope.selectedEvent = null;
-    var isFirstTime = true;
 
     var setColor = function(priority) {
         if (priority === "HIGH") {
@@ -19,8 +18,6 @@ angular.module('app.component2').controller('SecondViewController', function(uiC
         }
     }
 
-
-    $scope.events.slice(0, $scope.events.length);
     angular.forEach(todos, function(todo) {
         $scope.events.push({
             id: todo.id,
@@ -48,12 +45,6 @@ angular.module('app.component2').controller('SecondViewController', function(uiC
                 center: 'title',
                 right: 'today prev,next'
             },
-            eventMouseOver: function(event) {
-                alert("hi");
-            },
-            eventMouseOut: function(event) {
-                alert("bye");
-            },
             eventClick: function(event) {
                 $scope.selectedEvent = event;
                 $modal.open({
@@ -74,6 +65,14 @@ angular.module('app.component2').controller('SecondViewController', function(uiC
                         }
                     }
                 });
+            },
+            eventRender: function(event, element, view) {
+                element.attr({
+                    'popover': ['Title:  ' + event.title + ',  ' + 'Description:  ' + event.content.slice(0,5) + '...'],
+                    'popover-placement': 'right',
+                    'popover-trigger': 'mouseenter'
+                });
+                $compile(element)($scope);
             }
             //eventDrop: $scope.alertOnDrop,
             //eventResize: $scope.alertOnResize
