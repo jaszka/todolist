@@ -10,6 +10,11 @@ angular.module('app.component1').controller('FirstViewController', function($sco
         title: ''
     };
 
+    $scope.sort = function(keyname){
+        $scope.sortKey = keyname;
+        $scope.reverse = !$scope.reverse;
+    }
+
     $scope.view = function(id) {
         $modal.open({
             templateUrl: '/main/layout/modal-dialog.tpl.html',
@@ -49,18 +54,6 @@ angular.module('app.component1').controller('FirstViewController', function($sco
             }
         });
     };
-
-    $scope.totalItems = $scope.todos.length;
-    $scope.filteredTodos = [];
-    $scope.currentPage = 1;
-    $scope.numPerPage = 5;
-    $scope.noOfPages = Math.ceil($scope.totalItems / $scope.numPerPage);
-
-    // $scope.$watch('currentPage + numPerPage', function() {
-    //     var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-    //         , end = begin + $scope.numPerPage;
-    //     $scope.filteredTodos = $scope.todos.slice(begin, end);
-    // }, true);
 
     //controllery sa funkcja konstruktowa
 

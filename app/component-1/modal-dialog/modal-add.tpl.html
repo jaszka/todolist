@@ -34,7 +34,7 @@
                     <p><b>Priority:</b>
                         <select class="form-control" data-ng-model="todo.priority" data-ng-options="c for c in priorities" required></select></p>
                     <p><b>Content:</b>
-                        <textarea style="height:100px" type="text" name="content" class="form-control" data-ng-model="todo.content"></textarea></p>
+                        <textarea style="height:100px" type="text" name="content" class="form-control" data-ng-model="todo.content" required></textarea></p>
                     <p><b>Date:</b>
                         <span class="input-group"><input type="text" class="form-control" datepicker-popup="{{format}}" data-ng-model="todo.date" data-ng-click="open($event)" is-open="opened" min-date="minDate"
                         datepicker-options="dateOptions" close-text="Close" /><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>

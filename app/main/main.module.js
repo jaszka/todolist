@@ -1,4 +1,4 @@
-angular.module('app.main', ['ngRoute', 'app.main.templates', 'ui.bootstrap', 'ui.calendar'])
+angular.module('app.main', ['ngRoute', 'app.main.templates', 'ui.bootstrap', 'ui.calendar', 'angularUtils.directives.dirPagination'])
     .config(function ($routeProvider) {
         'use strict';
         $routeProvider
