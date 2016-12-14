@@ -16,20 +16,24 @@ angular.module('app.component1').controller('FirstViewController', function($sco
 
     $scope.view = function(id) {
         $modal.open({
-            templateUrl: '/component-1/modal-dialog/modal-dialog.tpl.html',
-            controller: 'ViewTaskController',
-            size: 'lg',
+            templateUrl: '/main/layout/modal-dialog.tpl.html',
+            controller: 'TodoViewController',
+            size: 'md',
             backdrop: 'static',
             keyboard: false,
             resolve: {
                 selectedTodo: function() {
                     return $scope.todo = $filter('filter')(todos, function(todo) { return todo.id === id; })[0];
+                },
+                list: function() {
+                    return true;
+                },
+                calendar: function() {
+                    return false;
                 }
             }
         })
     };
-
-    //$scope.test = console.log(todoService.todosTest());
 
     // todoService.todosList().then(function (list) {
     //     $scope.todos = list;
@@ -63,6 +67,11 @@ angular.module('app.component1').controller('FirstViewController', function($sco
     }, true);
 
     //controllery sa funkcja konstruktowa
+
+    $scope.test = function() {
+        $scope.err = todoService.testTodo();
+        console.log($scope.err);
+    }
 })
 
 //Promise service

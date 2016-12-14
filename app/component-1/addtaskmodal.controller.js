@@ -1,29 +1,4 @@
-angular.module('app.component1').controller('ViewTaskController', function($scope, $modal, $filter, $modalInstance, selectedTodo) {
-    'use strict';
-
-    $scope.selectedTodo = selectedTodo;
-
-    $scope.ok = function() {
-        $modalInstance.close();
-    };
-
-    $scope.edit = function() {
-        $modalInstance.close();
-        $modal.open({
-            templateUrl: '/component-1/modal-dialog/modal-add.tpl.html',
-            controller: 'AddTaskController',
-            size: 'md',
-            backdrop: 'static',
-            keyboard: false,
-            resolve: {
-                selectedTodo: function() {
-                    return $scope.selectedTodo;
-                }
-            }
-        });
-    };
-
-}).controller('AddTaskController', function($scope, $rootScope, $modalInstance, todoService, selectedTodo) {
+angular.module('app.component1').controller('AddTaskController', function ($scope, $rootScope, $modalInstance, todoService, selectedTodo) {
     'use strict';
 
     $scope.todo = {};
@@ -40,30 +15,32 @@ angular.module('app.component1').controller('ViewTaskController', function($scop
     }
 
     $scope.priorities = ["HIGH", "MEDIUM", "LOW"];
+    $scope.statuses = ["PENDING", "DONE", "SUSPENDED", "CANCELLED"];
 
-    $scope.submitAddForm = function() {
+    $scope.submitAddForm = function () {
         var todoToAdd = $scope.todo;
         var addedTodo = todoService.addTodo(todoToAdd);
         $modalInstance.close();
         $rootScope.$broadcast('updateView');
     };
 
-    $scope.submitEditForm = function() {
-        var changedTodo = todoService.amendTodo($scope.todo);
+    $scope.submitEditForm = function () {
+        var todoToChange = $scope.todo;
+        var changedTodo = todoService.amendTodo(todoToChange);
         $modalInstance.close();
         $rootScope.$broadcast('updateView');
     };
 
-    $scope.cancel = function() {
+    $scope.cancel = function () {
         $modalInstance.close();
     };
 
-    $scope.toggleMin = function() {
+    $scope.toggleMin = function () {
         $scope.minDate = $scope.minDate ? null : new Date();
     };
     $scope.toggleMin();
 
-    $scope.open = function($event) {
+    $scope.open = function ($event) {
         $event.preventDefault();
         $event.stopPropagation();
 
