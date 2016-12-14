@@ -40,10 +40,12 @@
                         datepicker-options="dateOptions" close-text="Close" /><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                         </span>
                     </p>
+                    <p><b>Status:</b>
+                    <select class="form-control" data-ng-model="todo.status" data-ng-options="s for s in statuses"></select></p>
             </form>
             <div class="modal-footer ">
                 <button data-ng-show="adding" class="btn btn-primary" data-ng-click="submitAddForm()" data-ng-disabled="taskForm.$invalid">Submit</button>
-                <button data-ng-show="editing" class="btn btn-primary" data-ng-click="submitEditForm()" data-ng-disabled="taskForm.$invalid">Submit changes</button>
+                <button data-ng-show="editing" class="btn btn-primary" data-ng-click="submitEditForm()">Submit changes</button>
                 <button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
             </div>
             </div>
