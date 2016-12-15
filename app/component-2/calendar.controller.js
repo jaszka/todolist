@@ -7,16 +7,16 @@ angular.module('app.component2').controller('SecondViewController', function(uiC
     $scope.selectedEvent = null;
 
     var setColor = function(priority) {
-        if (priority === "HIGH") {
-            return "#cc0000"
+        if (priority === 'HIGH') {
+            return '#cc0000';
         }
-        if (priority === "MEDIUM") {
-            return "#ffb400"
+        if (priority === 'MEDIUM') {
+            return '#ffb400';
         }
-        if (priority === "LOW") {
-            return "#56e25f"
+        if (priority === 'LOW') {
+            return '#56e25f';
         }
-    }
+    };
 
     angular.forEach(todos, function(todo) {
         $scope.events.push({
@@ -31,7 +31,7 @@ angular.module('app.component2').controller('SecondViewController', function(uiC
             allDayDefault: true,
             stick: true,
             color: setColor(todo.priority)
-        })
+        });
     });
 
     $scope.uiConfig = {
@@ -66,7 +66,7 @@ angular.module('app.component2').controller('SecondViewController', function(uiC
                     }
                 });
             },
-            eventRender: function(event, element, view) {
+            eventRender: function(event, element) {
                 element.attr({
                     'popover': ['Title:  ' + event.title + ',  ' + 'Description:  ' + event.content.slice(0,5) + '...'],
                     'popover-placement': 'right',
@@ -77,4 +77,4 @@ angular.module('app.component2').controller('SecondViewController', function(uiC
         }
     };
 
-})
+});

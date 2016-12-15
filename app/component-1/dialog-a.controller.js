@@ -13,7 +13,7 @@ angular.module('app.component1').controller('FirstViewController', function($sco
     $scope.sort = function(keyname){
         $scope.sortKey = keyname;
         $scope.reverse = !$scope.reverse;
-    }
+    };
 
     $scope.view = function(id) {
         $modal.open({
@@ -33,7 +33,7 @@ angular.module('app.component1').controller('FirstViewController', function($sco
                     return false;
                 }
             }
-        })
+        });
     };
 
     $scope.add = function() {
@@ -51,8 +51,4 @@ angular.module('app.component1').controller('FirstViewController', function($sco
         });
     };
 
-    $scope.test = function() {
-        $scope.err = todoService.testTodo();
-        console.log($scope.err);
-    }
-})
+});

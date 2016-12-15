@@ -4,8 +4,8 @@ angular.module('app.component1').controller('AddTaskController', function($scope
     $scope.todo = {};
     $scope.taskTitle = {};
 
-    $scope.priorities = ["HIGH", "MEDIUM", "LOW"];
-    $scope.statuses = ["PENDING", "DONE", "SUSPENDED", "CANCELLED"];
+    $scope.priorities = ['HIGH', 'MEDIUM', 'LOW'];
+    $scope.statuses = ['PENDING', 'DONE', 'SUSPENDED', 'CANCELLED'];
 
     if (selectedTodo === null) {
         $scope.adding = true;
@@ -19,14 +19,14 @@ angular.module('app.component1').controller('AddTaskController', function($scope
 
     $scope.submitAddForm = function() {
         var todoToAdd = $scope.todo;
-        var addedTodo = todoService.addTodo(todoToAdd);
+        todoService.addTodo(todoToAdd);
         $modalInstance.close();
         dialogAService.refreshView();
     };
 
     $scope.submitEditForm = function() {
         var todoToChange = $scope.todo;
-        var changedTodo = todoService.amendTodo(todoToChange);
+        todoService.amendTodo(todoToChange);
         $modalInstance.close();
         dialogAService.refreshView();
     };
@@ -55,4 +55,4 @@ angular.module('app.component1').controller('AddTaskController', function($scope
     $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
     $scope.format = $scope.formats[0];
 
-})
+});

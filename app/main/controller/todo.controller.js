@@ -6,7 +6,7 @@ angular.module('app').controller('TodoViewController', function ($scope, $modal,
 
     $scope.selectedTodo = selectedTodo;
 
-    $scope.statuses = ["PENDING", "DONE", "SUSPENDED", "CANCELLED"];
+    $scope.statuses = ['PENDING', 'DONE', 'SUSPENDED', 'CANCELLED'];
 
     $scope.ok = function () {
         $modalInstance.close();
@@ -37,8 +37,8 @@ angular.module('app').controller('TodoViewController', function ($scope, $modal,
             content: $scope.selectedTodo.content,
             status: $scope.selectedTodo.status
         };
-        var addedTodo = todoService.amendTodo(todoToAdd);
+        todoService.amendTodo(todoToAdd);
         $modalInstance.close();
     };
 
-})
+});
