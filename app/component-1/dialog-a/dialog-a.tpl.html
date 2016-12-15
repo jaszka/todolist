@@ -8,9 +8,6 @@
             <div class="form-group">
                 <input name="searchInput" class="form-control" data-ng-model="search[filter]" placeholder="Filter your tasks by title" />
             </div>
-            <!--<div>
-                <button class="btn btn-default" data-ng-click="test()">TEST</button>
-            </div>-->
             <div>
                 <button class="btn btn-default" data-ng-click="sort('id')">Order by last added</button>
             </div>
@@ -40,7 +37,7 @@
                 </tbody>
             </table>
             <div>
-                <button class="btn btn-default btn-block" data-ng-click="add()"> Add todo </button>
+                <button id="add_task" class="btn btn-default btn-block" data-ng-click="add()"> Add todo </button>
             </div>
             <div class="text-center">
                 <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
@@ -51,7 +48,3 @@
 </body>
 
 </html>
-
-<!--
-    <div ng-app="moduleName"></div> podlaczenie modulu do widoku
--->

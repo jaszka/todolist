@@ -21,7 +21,7 @@
             <p data-ng-show="calendar"><b>Status:</b><select class="form-control" data-ng-model="selectedTodo.status" data-ng-options="s for s in statuses"></select></p>
         </div>
         <div class="modal-footer ">
-            <button class="btn btn-primary" data-ng-click="ok()">OK</button>
+            <button id="ok_btn" class="btn btn-primary" data-ng-click="ok()">OK</button>
             <button data-ng-show="list" class="btn btn-primary" data-ng-click="edit()">Edit</button>
             <button data-ng-show="calendar" class="btn btn-primary" data-ng-click="editStatus()">Edit status</button>
         </div>

@@ -36,10 +36,6 @@ angular.module('app.component1').controller('FirstViewController', function($sco
         })
     };
 
-    // todoService.todosList().then(function (list) {
-    //     $scope.todos = list;
-    // });
-
     $scope.add = function() {
         $modal.open({
             templateUrl: '/component-1/modal-dialog/modal-add.tpl.html',
@@ -55,12 +51,8 @@ angular.module('app.component1').controller('FirstViewController', function($sco
         });
     };
 
-    //controllery sa funkcja konstruktowa
-
     $scope.test = function() {
         $scope.err = todoService.testTodo();
         console.log($scope.err);
     }
 })
-
-//Promise service

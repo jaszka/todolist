@@ -1,8 +1,11 @@
-angular.module('app.component1').controller('AddTaskController', function ($scope, $rootScope, $modalInstance, todoService, dialogAService, selectedTodo) {
+angular.module('app.component1').controller('AddTaskController', function($scope, $modalInstance, todoService, dialogAService, selectedTodo) {
     'use strict';
 
     $scope.todo = {};
     $scope.taskTitle = {};
+
+    $scope.priorities = ["HIGH", "MEDIUM", "LOW"];
+    $scope.statuses = ["PENDING", "DONE", "SUSPENDED", "CANCELLED"];
 
     if (selectedTodo === null) {
         $scope.adding = true;
@@ -14,33 +17,30 @@ angular.module('app.component1').controller('AddTaskController', function ($scop
         $scope.taskTitle = $scope.todo.title;
     }
 
-    $scope.priorities = ["HIGH", "MEDIUM", "LOW"];
-    $scope.statuses = ["PENDING", "DONE", "SUSPENDED", "CANCELLED"];
-
-    $scope.submitAddForm = function () {
+    $scope.submitAddForm = function() {
         var todoToAdd = $scope.todo;
         var addedTodo = todoService.addTodo(todoToAdd);
         $modalInstance.close();
         dialogAService.refreshView();
     };
 
-    $scope.submitEditForm = function () {
+    $scope.submitEditForm = function() {
         var todoToChange = $scope.todo;
         var changedTodo = todoService.amendTodo(todoToChange);
         $modalInstance.close();
         dialogAService.refreshView();
     };
 
-    $scope.cancel = function () {
+    $scope.cancel = function() {
         $modalInstance.close();
     };
 
-    $scope.toggleMin = function () {
+    $scope.toggleMin = function() {
         $scope.minDate = $scope.minDate ? null : new Date();
     };
     $scope.toggleMin();
 
-    $scope.open = function ($event) {
+    $scope.open = function($event) {
         $event.preventDefault();
         $event.stopPropagation();
 

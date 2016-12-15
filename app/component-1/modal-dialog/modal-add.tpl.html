@@ -9,7 +9,7 @@
 <body>
     <div class="modal-content">
         <div class="modal-header">
-            <h3 data-ng-show="adding" class="modal-title">Add a new task</h3>
+            <h3 id="modal_title" data-ng-show="adding" class="modal-title">Add a new task</h3>
             <h3 data-ng-show="editing" class="modal-title">Edit task {{taskTitle}}</h3>
         </div>
         <div class="modal-body">
@@ -17,34 +17,34 @@
                 <p><b>Category:</b>
                     <div class="btn-group btn-group-justified" role="group">
                         <div class="btn-group">
-                            <input type="radio" name="category" data-ng-model="todo.category" data-ng-value="'MEETING'"><span
+                            <input id="cat_meet" type="radio" name="category" data-ng-model="todo.category" data-ng-value="'MEETING'"><span
                                 class="glyphicon glyphicon-user" />Meeting
                         </div>
                         <div class="btn-group">
-                            <input type="radio" name="category" data-ng-model="todo.category" data-ng-value="'SHOPPING'"><span
+                            <input id="cat_shop" type="radio" name="category" data-ng-model="todo.category" data-ng-value="'SHOPPING'"><span
                                 class="glyphicon glyphicon-piggy-bank" />Shopping
                         </div>
                         <div class="btn-group">
-                            <input type="radio" name="category" data-ng-model="todo.category" data-ng-value="'REMINDER'"><span
+                            <input id="cat_remind" type="radio" name="category" data-ng-model="todo.category" data-ng-value="'REMINDER'"><span
                                 class="glyphicon glyphicon-bell" />Reminder
                         </div>
                     </div>
                     <p><b>Title:</b>
-                        <input type="text" name="title" class="form-control" data-ng-model="todo.title" required></p>
+                        <input id="title" type="text" name="title" class="form-control" data-ng-model="todo.title" required></p>
                     <p><b>Priority:</b>
-                        <select class="form-control" data-ng-model="todo.priority" data-ng-options="c for c in priorities" required></select></p>
+                        <select id="priority" class="form-control" data-ng-model="todo.priority" data-ng-options="c for c in priorities" required></select></p>
                     <p><b>Content:</b>
-                        <textarea style="height:100px" type="text" name="content" class="form-control" data-ng-model="todo.content" required></textarea></p>
+                        <textarea id="content" style="height:100px" type="text" name="content" class="form-control" data-ng-model="todo.content" required></textarea></p>
                     <p><b>Date:</b>
-                        <span class="input-group"><input type="text" class="form-control" datepicker-popup="{{format}}" data-ng-model="todo.date" data-ng-click="open($event)" is-open="opened" min-date="minDate"
+                        <span class="input-group"><input id="date" type="text" class="form-control" datepicker-popup="{{format}}" data-ng-model="todo.date" data-ng-click="open($event)" is-open="opened" min-date="minDate"
                         datepicker-options="dateOptions" close-text="Close" /><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                         </span>
                     </p>
                     <p><b>Status:</b>
-                    <select class="form-control" data-ng-model="todo.status" data-ng-options="s for s in statuses"></select></p>
+                    <select id="status" class="form-control" data-ng-model="todo.status" data-ng-options="s for s in statuses"></select></p>
             </form>
             <div class="modal-footer ">
-                <button data-ng-show="adding" class="btn btn-primary" data-ng-click="submitAddForm()" data-ng-disabled="taskForm.$invalid">Submit</button>
+                <button id="add_task" data-ng-show="adding" class="btn btn-primary" data-ng-click="submitAddForm()" data-ng-disabled="taskForm.$invalid">Submit</button>
                 <button data-ng-show="editing" class="btn btn-primary" data-ng-click="submitEditForm()">Submit changes</button>
                 <button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
             </div>

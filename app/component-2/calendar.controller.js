@@ -1,4 +1,4 @@
-angular.module('app.component2').controller('SecondViewController', function(uiCalendarConfig, $scope, $modal, $filter, $window, $compile, todoService, todos) {
+angular.module('app.component2').controller('SecondViewController', function(uiCalendarConfig, $scope, $modal, $compile, todos) {
     'use strict';
 
     $scope.events = [];
@@ -74,8 +74,6 @@ angular.module('app.component2').controller('SecondViewController', function(uiC
                 });
                 $compile(element)($scope);
             }
-            //eventDrop: $scope.alertOnDrop,
-            //eventResize: $scope.alertOnResize
         }
     };
 
