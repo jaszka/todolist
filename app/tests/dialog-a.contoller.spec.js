@@ -1,10 +1,7 @@
 describe('dialog-a.controller tests', function () {
 
-    var scopeMock, modalMock, tasksMock, taskServiceMock;
+    var modalMock, tasksMock, taskServiceMock;
 
-    scopeMock = {
-        path: angular.noop
-    };
     modalMock = {
         path: angular.noop
     };
