@@ -5,10 +5,6 @@ angular.module('app.component1').controller('FirstViewController', function($sco
     $scope.todo = {};
 
     $scope.filter = 'title';
-    $scope.search = {
-        category: '',
-        title: ''
-    };
 
     $scope.sort = function(keyname){
         $scope.sortKey = keyname;
